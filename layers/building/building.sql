@@ -116,7 +116,8 @@ RETURNS TABLE(geometry geometry, osm_id bigint, render_height int, render_min_he
     FROM (
         -- etldoc: osm_building_polygon_gen1 -> layer_building:z13
         SELECT
-            osm_id, geometry,
+            osm_id,
+            ST_ForcePolygonCW(geometry) AS geometry,
             NULL::int AS render_height, NULL::int AS render_min_height,
             NULL::text AS material, NULL::text AS colour,
             FALSE AS hide_3d
@@ -125,7 +126,8 @@ RETURNS TABLE(geometry geometry, osm_id bigint, render_height int, render_min_he
         UNION ALL
         -- etldoc: osm_building_polygon -> layer_building:z14_
         SELECT DISTINCT ON (osm_id)
-           osm_id, geometry,
+           osm_id,
+           ST_ForcePolygonCW(geometry) AS geometry,
            ceil( COALESCE(height, levels*3.66,5))::int AS render_height,
            floor(COALESCE(min_height, min_level*3.66,0))::int AS render_min_height,
            material,
