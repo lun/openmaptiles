@@ -1,0 +1,23 @@
+layer:
+  id: "landuse_residential"
+  description: |
+      Landuse_residential is used to describe residential use of land by humans. At lower zoom levels this is
+      from Natural Earth data for residential (urban) areas and at higher zoom levels mostly OSM `landuse` tags.
+  buffer_size: 4
+  fields:
+    subclass:
+      description: |
+          Use the **subclass** to assign special colors to areas.
+          Original value of the [`residential`](http://wiki.openstreetmap.org/wiki/Key:residential) tag.
+      values:
+      - urban
+      - rural
+      - apartments
+  datasource:
+    geometry_field: geometry
+    query: (SELECT geometry, subclass FROM layer_landuse_residential(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./landuse_residential.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml
