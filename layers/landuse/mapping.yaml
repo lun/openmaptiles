@@ -59,7 +59,6 @@ tables:
       - cemetery
       - military
       # zoning
-      - residential
       - commercial
       - industrial
       - retail

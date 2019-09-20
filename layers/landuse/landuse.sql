@@ -1,22 +1,3 @@
--- etldoc: ne_50m_urban_areas -> landuse_z4
-CREATE OR REPLACE VIEW landuse_z4 AS (
-    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
-    FROM ne_50m_urban_areas
-    WHERE scalerank <= 2
-);
-
--- etldoc: ne_50m_urban_areas -> landuse_z5
-CREATE OR REPLACE VIEW landuse_z5 AS (
-    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
-    FROM ne_50m_urban_areas
-);
-
--- etldoc: ne_10m_urban_areas -> landuse_z6
-CREATE OR REPLACE VIEW landuse_z6 AS (
-    SELECT NULL::bigint AS osm_id, geometry, 'residential'::text AS landuse, NULL::text AS amenity, NULL::text AS leisure, NULL::text AS tourism, NULL::text AS place, scalerank
-    FROM ne_10m_urban_areas
-);
-
 -- etldoc: osm_landuse_polygon_gen5 -> landuse_z9
 CREATE OR REPLACE VIEW landuse_z9 AS (
     SELECT osm_id, geometry, landuse, amenity, leisure, tourism, place, NULL::int as scalerank
@@ -54,7 +35,7 @@ CREATE OR REPLACE VIEW landuse_z14 AS (
 );
 
 -- etldoc: layer_landuse[shape=record fillcolor=lightpink, style="rounded,filled",
--- etldoc:     label="layer_landuse |<z4> z4|<z5>z5|<z6>z6|<z7>z7| <z8> z8 |<z9> z9 |<z10> z10 |<z11> z11|<z12> z12|<z13> z13|<z14> z14+" ] ;
+-- etldoc:     label="layer_landuse |<z7>z7| <z8> z8 |<z9> z9 |<z10> z10 |<z11> z11|<z12> z12|<z13> z13|<z14> z14+" ] ;
 
 CREATE OR REPLACE FUNCTION layer_landuse(bbox geometry, zoom_level int)
 RETURNS TABLE(osm_id bigint, geometry geometry, class text) AS $$
@@ -67,20 +48,6 @@ RETURNS TABLE(osm_id bigint, geometry geometry, class text) AS $$
             NULLIF(place, '')
         ) AS class
         FROM (
-        -- etldoc: landuse_z4 -> layer_landuse:z4
-        SELECT * FROM landuse_z4
-        WHERE zoom_level = 4
-        UNION ALL
-        -- etldoc: landuse_z5 -> layer_landuse:z5
-        SELECT * FROM landuse_z5
-        WHERE zoom_level = 5
-        UNION ALL
-        -- etldoc: landuse_z6 -> layer_landuse:z6
-        -- etldoc: landuse_z6 -> layer_landuse:z7
-        -- etldoc: landuse_z6 -> layer_landuse:z8
-        SELECT * FROM landuse_z6
-        WHERE zoom_level BETWEEN 6 AND 8 AND scalerank-1 <= zoom_level
-        UNION ALL
         -- etldoc: landuse_z9 -> layer_landuse:z9
         SELECT * FROM landuse_z9 WHERE zoom_level = 9
         UNION ALL
