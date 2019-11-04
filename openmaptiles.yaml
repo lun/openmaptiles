@@ -28,7 +28,8 @@ tileset:
   minzoom: 0
   pixel_scale: 256
   languages:
-    - ar # Arabic
+    - am # Amharic
+    - ar # Arabic  
     - az # Azerbaijani, Latin
     - be # Belarusian
     - bg # Bulgarian
@@ -66,6 +67,7 @@ tileset:
     - kn # Kannada
     - ko # Korean
     - ko_rm # romanization of Korean, Latin
+    - ku # Kurdish, Latin
     - la # Latin, Latin
     - lb # Luxembourgish, Latin
     - lt # Lithuanian, Latin
