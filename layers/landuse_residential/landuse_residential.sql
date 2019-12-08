@@ -11,10 +11,16 @@ CREATE OR REPLACE VIEW landuse_residential_z5 AS (
     FROM ne_50m_urban_areas
 );
 
--- etldoc: ne_10m_urban_areas -> landuse_residential_z6
+-- etldoc: osm_landuse_residential_polygon_gen7 -> landuse_residential_z6
 CREATE OR REPLACE VIEW landuse_residential_z6 AS (
-    SELECT NULL::bigint AS osm_id, geometry, 'urban'::text AS residential, scalerank
-    FROM ne_10m_urban_areas
+    SELECT osm_id, geometry, residential, NULL::int as scalerank
+    FROM osm_landuse_residential_polygon_gen7
+);
+
+-- etldoc: osm_landuse_residential_polygon_gen6 -> landuse_z8
+CREATE OR REPLACE VIEW landuse_z8 AS (
+    SELECT osm_id, geometry, residential, NULL::int as scalerank
+    FROM osm_landuse_residential_polygon_gen6
 );
 
 -- etldoc: osm_landuse_residential_polygon_gen5 -> landuse_residential_z9
@@ -70,9 +76,10 @@ RETURNS TABLE(osm_id bigint, geometry geometry, subclass text) AS $$
         UNION ALL
         -- etldoc: landuse_residential_z6 -> layer_landuse_residential:z6
         -- etldoc: landuse_residential_z6 -> layer_landuse_residential:z7
-        -- etldoc: landuse_residential_z6 -> layer_landuse_residential:z8
-        SELECT * FROM landuse_residential_z6
-        WHERE zoom_level BETWEEN 6 AND 8 AND scalerank-1 <= zoom_level
+        SELECT * FROM landuse_residential_z6 WHERE zoom_level BETWEEN 6 AND 7
+        UNION ALL
+        -- etldoc: landuse_residential_z8 -> layer_landuse_residential:z8
+        SELECT * FROM landuse_residential_z8 WHERE zoom_level = 8
         UNION ALL
         -- etldoc: landuse_residential_z9 -> layer_landuse_residential:z9
         SELECT * FROM landuse_residential_z9 WHERE zoom_level = 9

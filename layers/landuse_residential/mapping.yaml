@@ -1,4 +1,13 @@
 generalized_tables:
+  # etldoc: imposm3 -> osm_landuse_residential_polygon_gen7
+  landuse_residential_polygon_gen7:
+    source: landuse_residential_polygon_gen6
+    tolerance: ZRES7
+  # etldoc: imposm3 -> osm_landuse_residential_polygon_gen6
+  landuse_residential_polygon_gen6:
+    source: landuse_residential_polygon_gen5
+    sql_filter: area>power(ZRES8,2)
+    tolerance: ZRES8
   # etldoc: imposm3 -> osm_landuse_residential_polygon_gen5
   landuse_residential_polygon_gen5:
     source: landuse_residential_polygon_gen4
