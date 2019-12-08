@@ -18,7 +18,7 @@ CREATE OR REPLACE VIEW landuse_residential_z6 AS (
 );
 
 -- etldoc: osm_landuse_residential_polygon_gen6 -> landuse_residential_z8
-CREATE OR REPLACE VIEW landuse_z8 AS (
+CREATE OR REPLACE VIEW landuse_residential_z8 AS (
     SELECT osm_id, geometry, residential, NULL::int as scalerank
     FROM osm_landuse_residential_polygon_gen6
 );
