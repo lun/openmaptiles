@@ -1,19 +1,4 @@
 generalized_tables:
-  # etldoc: osm_landuse_polygon_gen_z7 -> osm_landuse_polygon_gen_z6
-  landuse_polygon_gen_z6:
-    source: landuse_polygon_gen_z7
-    tolerance: ZRES6
-    sql_filter: area>power(ZRES6,2)
-  # etldoc: osm_landuse_polygon_gen_z8 -> osm_landuse_polygon_gen_z7
-  landuse_polygon_gen_z7:
-    source: landuse_polygon_gen_z8
-    tolerance: ZRES7
-    sql_filter: area>power(ZRES6,2)
-  # etldoc: osm_landuse_polygon_gen_z9 -> osm_landuse_polygon_gen_z8
-  landuse_polygon_gen_z8:
-    source: landuse_polygon_gen_z9
-    sql_filter: area>power(ZRES6,2) AND (landuse='residential' OR place='suburb' OR place='neighbourhood')
-    tolerance: ZRES8
   # etldoc: osm_landuse_polygon_gen_z10 -> osm_landuse_polygon_gen_z9
   landuse_polygon_gen_z9:
     source: landuse_polygon_gen_z10
@@ -75,7 +60,6 @@ tables:
       - cemetery
       - military
       # zoning
-      - residential
       - commercial
       - industrial
       - garages
