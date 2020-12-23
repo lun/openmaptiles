@@ -57,11 +57,9 @@ def_poi_mapping_amenity: &poi_mapping_amenity
   - taxi
   - telephone
   - theatre
-  - toilets
   - townhall
   - university
   - veterinary
-  - waste_basket
 
 # barrier values , see http://taginfo.openstreetmap.org/keys/barrier#values
 def_poi_mapping_barrier: &poi_mapping_barrier
@@ -159,7 +157,6 @@ def_poi_mapping_shop: &poi_mapping_shop
   - doityourself
   - dry_cleaning
   - electronics
-  - erotic
   - fabric
   - florist
   - frozen_food
