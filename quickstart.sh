@@ -238,13 +238,6 @@ make import-borders
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
-echo "====> : Start importing Wikidata: Wikidata Query Service -> PostgreSQL"
-echo "      : The Wikidata license: CC0 - https://www.wikidata.org/wiki/Wikidata:Main_Page "
-echo "      : Thank you Wikidata Contributors ! "
-make import-wikidata
-
-echo " "
-echo "-------------------------------------------------------------------------------------"
 echo "====> : Start SQL postprocessing:  ./build/sql/* -> PostgreSQL "
 echo "      : Source code: https://github.com/openmaptiles/openmaptiles-tools/blob/master/bin/import-sql"
 # If the output contains a WARNING, stop further processing
