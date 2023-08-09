@@ -51,8 +51,6 @@ Together the layers make up the OpenMapTiles tileset.
 
 - [aeroway](https://openmaptiles.org/schema/#aeroway)
 - [boundary](https://openmaptiles.org/schema/#boundary)
-- [building](https://openmaptiles.org/schema/#building)
-- [housenumber](https://openmaptiles.org/schema/#housenumber)
 - [landcover](https://openmaptiles.org/schema/#landcover)
 - [landuse](https://openmaptiles.org/schema/#landuse)
 - [mountain_peak](https://openmaptiles.org/schema/#mountain_peak)
