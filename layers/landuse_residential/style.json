@@ -8,7 +8,8 @@
       "minzoom": 4,
       "maxzoom": 24,
       "filter": ["all", ["!=", "subclass", "rural"]],
-      "paint": {"fill-color": "hsl (220%, 40%, 90%)"}
+      "paint": {"fill-color": "hsl (220%, 40%, 90%)"},
+      "order": 1
     },
     {
       "id": "landuse_residential_rural",
@@ -18,7 +19,8 @@
       "minzoom": 9,
       "maxzoom": 24,
       "filter": ["all", ["==", "subclass", "rural"]],
-      "paint": {"fill-color": "hsl (220%, 40%, 90%)"}
+      "paint": {"fill-color": "hsl (220%, 40%, 90%)"},
+      "order": 2
     }
   ]
 }
