@@ -4,6 +4,7 @@ tileset:
     - layers/waterway/waterway.yaml
     - layers/landcover/landcover.yaml
     - layers/landuse/landuse.yaml
+    - layers/landuse_residential/landuse_residential.yaml
     - layers/mountain_peak/mountain_peak.yaml
     - layers/park/park.yaml
     - layers/boundary/boundary.yaml
