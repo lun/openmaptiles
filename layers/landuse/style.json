@@ -90,7 +90,7 @@
           "Polygon"
         ]
       ],
-      "order": 1
+      "order": 3
     },
     {
       "id": "landuse_residential",
@@ -131,7 +131,7 @@
           "neighbourhood"
         ]
       ],
-      "order": 2
+      "order": 4
     },
     {
       "id": "landuse_class_pattern",
