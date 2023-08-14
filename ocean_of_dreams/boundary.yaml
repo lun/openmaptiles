@@ -1,0 +1,10 @@
+layer:
+  id: "ocean_of_dreams"
+  requires:
+    tables:
+      - osm_ocean_of_dreams_border_linestring
+schema:
+  - ./country_border.sql
+datasources:
+  - type: imposm3
+    mapping_file: ./mapping.yaml
