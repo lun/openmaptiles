@@ -20,6 +20,7 @@ layer:
     geometry_field: geometry
     query: (SELECT geometry, subclass FROM layer_landuse_residential(!bbox!, z(!scale_denominator!))) AS t
 schema:
+  - ./prep_landuse_residential.sql
   - ./landuse_residential.sql
 datasources:
   - type: imposm3
