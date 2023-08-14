@@ -3,6 +3,10 @@ layer:
   requires:
     tables:
       - osm_ocean_of_dreams_border_linestring
+  buffer_size: 4
+  datasource:
+    geometry_field: geometry
+    query: (SELECT ST_GeomFromText('POINT(0 0)') AS geometry) AS t
 schema:
   - ./country_border.sql
 datasources:
