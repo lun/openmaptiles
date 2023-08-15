@@ -16,91 +16,91 @@ DROP MATERIALIZED VIEW IF EXISTS osm_ocean_of_dreams_border_z12;
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z12 AS
 (
     SELECT ST_Simplify(geometry, ZRes(14))
-    FROM osm_ocean_of_dreams_border;
+    FROM osm_ocean_of_dreams_border
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z12 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z11 AS
 (
     SELECT ST_Simplify(geometry, ZRes(13))
-    FROM osm_ocean_of_dreams_border_z12;
+    FROM osm_ocean_of_dreams_border_z12
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z11 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z10 AS
 (
     SELECT ST_Simplify(geometry, ZRes(12))
-    FROM osm_ocean_of_dreams_border_z11;
+    FROM osm_ocean_of_dreams_border_z11
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z10 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z9 AS
 (
     SELECT ST_Simplify(geometry, ZRes(11))
-    FROM osm_ocean_of_dreams_border_z10;
+    FROM osm_ocean_of_dreams_border_z10
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z9 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z8 AS
 (
     SELECT ST_Simplify(geometry, ZRes(10))
-    FROM osm_ocean_of_dreams_border_z9;
+    FROM osm_ocean_of_dreams_border_z9
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z8 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z7 AS
 (
     SELECT ST_Simplify(geometry, ZRes(9))
-    FROM osm_ocean_of_dreams_border_z8;
+    FROM osm_ocean_of_dreams_border_z8
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z7 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z6 AS
 (
     SELECT ST_Simplify(geometry, ZRes(8))
-    FROM osm_ocean_of_dreams_border_z7;
+    FROM osm_ocean_of_dreams_border_z7
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z6 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z5 AS
 (
     SELECT ST_Simplify(geometry, ZRes(7))
-    FROM osm_ocean_of_dreams_border_z6;
+    FROM osm_ocean_of_dreams_border_z6
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z5 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z4 AS
 (
     SELECT ST_Simplify(geometry, ZRes(6))
-    FROM osm_ocean_of_dreams_border_z5;
+    FROM osm_ocean_of_dreams_border_z5
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z4 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z3 AS
 (
     SELECT ST_Simplify(geometry, ZRes(5))
-    FROM osm_ocean_of_dreams_border_z4;
+    FROM osm_ocean_of_dreams_border_z4
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z3 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z2 AS
 (
     SELECT ST_Simplify(geometry, ZRes(4))
-    FROM osm_ocean_of_dreams_border_z3;
+    FROM osm_ocean_of_dreams_border_z3
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z2 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z1 AS
 (
     SELECT ST_Simplify(geometry, ZRes(3))
-    FROM osm_ocean_of_dreams_border_z2;
+    FROM osm_ocean_of_dreams_border_z2
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z1 USING gist(geometry);
 
 CREATE MATERIALIZED VIEW osm_ocean_of_dreams_border_z0 AS
 (
     SELECT ST_Simplify(geometry, ZRes(2))
-    FROM osm_ocean_of_dreams_border_z1;
+    FROM osm_ocean_of_dreams_border_z1
 );
 CREATE INDEX ON osm_ocean_of_dreams_border_z0 USING gist(geometry);
 
