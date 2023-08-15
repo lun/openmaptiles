@@ -8,7 +8,7 @@ layer:
     geometry_field: geometry
     query: (SELECT ST_GeomFromText('POINT(0 0)') AS geometry) AS t
 schema:
-  - ./country_border.sql
+  - ./ocean_of_dreams.sql
 datasources:
   - type: imposm3
     mapping_file: ./mapping.yaml

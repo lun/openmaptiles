@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS osm_ocean_of_dreams_border AS (
         SELECT (ST_Dump(ST_LineMerge(geometry))).geom AS geometry
         FROM (
             SELECT ST_Node(ST_Collect(geometry)) AS geometry
-            FROM osm_border_linestring
+            FROM ocean_of_dreams_border_linestring
             WHERE admin_level = 2 AND ST_Dimension(geometry) = 1
         ) nodes
     ) linemerge
