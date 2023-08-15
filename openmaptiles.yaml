@@ -15,6 +15,7 @@ tileset:
     - layers/place/place.yaml
     - layers/poi/poi.yaml
     - layers/aerodrome_label/aerodrome_label.yaml
+    - layers/ocean_of_dreams/ocean_of_dreams.yaml
   name: OpenMapTiles
   version: 3.14.0
   id: openmaptiles

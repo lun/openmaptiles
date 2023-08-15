@@ -1,0 +1,14 @@
+{
+  "layers": [
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "ocean_of_dreams",
+      "paint": {
+        "fill-color": "hsl(200%, 100%, 75%)"
+      },
+      "order": 200
+    }
+  ]
+}

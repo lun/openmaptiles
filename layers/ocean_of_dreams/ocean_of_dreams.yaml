@@ -1,0 +1,10 @@
+layer:
+  id: "ocean_of_dreams"
+  requires:
+    tables:
+      - osm_ocean_of_dreams_border
+  buffer_size: 4
+  datasource:
+    query: (SELECT geometry FROM layer_ocean_of_dreams(!bbox!, z(!scale_denominator!))) AS t
+schema:
+  - ./ocean_of_dreams.sql

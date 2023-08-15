@@ -1,0 +1,11 @@
+{
+  "layers": [
+    {
+      "id": "ocean_of_dreams",
+      "type": "circle",
+      "source": "ocean_of_dreams",
+      "source-layer": "ocean_of_dreams",
+      "order": 1
+    }
+  ]
+}
