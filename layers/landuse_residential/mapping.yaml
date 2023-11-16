@@ -1,0 +1,24 @@
+generalized_tables:
+  # etldoc: osm_landuse_residential_polygon -> osm_landuse_residential_polygon_gen_z13
+  landuse_residential_polygon_gen_z13:
+    source: landuse_residential_polygon
+    sql_filter: area>power(ZRES11,2) AND ST_IsValid(geometry)
+    tolerance: ZRES13
+
+tables:
+  # etldoc: imposm3 -> osm_landuse_residential_polygon
+  landuse_residential_polygon:
+    type: polygon
+    columns:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: validated_geometry
+    - name: residential
+      key: residential
+      type: string
+    - name: area
+      type: area
+    mapping:
+      landuse:
+      - residential
