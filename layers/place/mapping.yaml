@@ -138,6 +138,8 @@ tables:
       type: string
     - *rank
     filters:
+      reject:
+        name: ["Республика Крым"]
       require:
         name: ["__any__"]
     mapping:
