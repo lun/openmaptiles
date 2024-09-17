@@ -606,9 +606,9 @@ else
 	@echo "Refreshing docker images... Use NO_REFRESH=1 to skip."
 ifneq ($(USE_PRELOADED_IMAGE),)
 	POSTGIS_IMAGE=openmaptiles/postgis-preloaded \
-		docker-compose pull --ignore-pull-failures $(QUIET_FLAG) openmaptiles-tools generate-vectortiles postgres
+		docker compose pull --ignore-pull-failures $(QUIET_FLAG) openmaptiles-tools generate-vectortiles postgres
 else
-	docker-compose pull --ignore-pull-failures $(QUIET_FLAG) openmaptiles-tools generate-vectortiles postgres import-data
+	docker compose pull --ignore-pull-failures $(QUIET_FLAG) openmaptiles-tools generate-vectortiles postgres import-data
 endif
 endif
 
@@ -633,7 +633,7 @@ test-perf-null: init-dirs
 
 .PHONY: build-test-pbf
 build-test-pbf: init-dirs
-	docker-compose run $(DC_OPTS) openmaptiles-tools /tileset/.github/workflows/build-test-data.sh
+	docker compose run $(DC_OPTS) openmaptiles-tools /tileset/.github/workflows/build-test-data.sh
 
 .PHONY: debug
 debug:  ## Use this target when developing Makefile itself to verify loaded environment variables

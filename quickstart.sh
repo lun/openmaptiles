@@ -76,16 +76,10 @@ echo "      : Minimum required docker-compose version: $MIN_COMPOSE_VER+"
 echo "      : See the .travis build for the currently supported versions."
 echo "      : Your docker system:"
 docker         --version
-docker-compose --version
+# docker-compose --version
 
 # based on: http://stackoverflow.com/questions/16989598/bash-comparing-version-numbers
 function version { echo "$@" | tr -d 'v' | tr -cs '0-9.' '.' | awk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
-
-COMPOSE_VER=$(docker-compose version --short)
-if [ "$(version "$COMPOSE_VER")" -lt "$(version "$MIN_COMPOSE_VER")" ]; then
-  echo "ERR: Your Docker-compose version is known to have bugs, please update docker-compose!"
-  exit 1
-fi
 
 DOCKER_VER="$(docker -v | awk -F '[ ,]+' '{ print $3 }')"
 if [ "$(version "$DOCKER_VER")" -lt "$(version "$MIN_DOCKER_VER")" ]; then
@@ -116,7 +110,6 @@ echo "      : Started          : $STARTDATE "
 echo "      : Your bash version: $BASH_VERSION"
 echo "      : Your OS          : $OSTYPE"
 docker         --version
-docker-compose --version
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo " "
