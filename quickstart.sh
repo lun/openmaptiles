@@ -248,7 +248,7 @@ make test-perf-null
 echo " "
 echo "-------------------------------------------------------------------------------------"
 
-if [[ "$(source .env ; echo "$BBOX")" = "-180.0,-85.0511,180.0,85.0511" ]]; then
+if [[ "$(source .env ; echo "$GENERATE_BBOX")" = "1" ]]; then
   if [[ "$area" != "planet" ]]; then
     echo "====> : Compute bounding box for tile generation"
     make generate-bbox-file ${MIN_ZOOM:+MIN_ZOOM="${MIN_ZOOM}"} ${MAX_ZOOM:+MAX_ZOOM="${MAX_ZOOM}"}

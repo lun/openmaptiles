@@ -19,10 +19,10 @@ FROM (
              NULL::text AS adm0_l,
              NULL::text AS adm0_r,
              MIN(admin_level) AS admin_level,
-             BOOL_OR(disputed)
+             (BOOL_OR(disputed)
                  OR BOOL_OR(dispute)
                  OR BOOL_OR(border_status = 'disputed')
-                 OR BOOL_OR(disputed_by <> '') AS disputed,
+                 OR BOOL_OR(disputed_by <> '')) AND claimed_by != 'UA' AS disputed,
              NULLIF(name, '') AS name,
              NULLIF(claimed_by, '') AS claimed_by,
              BOOL_OR(maritime) AS maritime
@@ -194,7 +194,7 @@ SELECT ST_Simplify(geometry, ZRes(6)) as geometry,
        NULL::text AS claimed_by,
        FALSE AS maritime
 FROM ne_10m_admin_0_boundary_lines_land
-WHERE featurecla <> 'Lease limit'
+WHERE featurecla <> 'Lease limit' AND (fclass_ua IS NULL OR fclass_ua LIKE 'International boundary%')
     ) /* DELAY_MATERIALIZED_VIEW_CREATION */ ;
 CREATE INDEX IF NOT EXISTS ne_10m_admin_0_boundary_lines_land_gen_z4_idx ON ne_10m_admin_0_boundary_lines_land_gen_z4 USING gist (geometry);
 
@@ -212,6 +212,16 @@ SELECT ST_Simplify(geometry, ZRes(6)) as geometry,
        min_zoom
 FROM ne_10m_admin_1_states_provinces_lines
 WHERE min_zoom <= 7.7
+UNION ALL
+SELECT ST_Simplify(geometry, ZRes(6)) as geometry,
+       4 AS admin_level,
+       FALSE AS disputed,
+       NULL::text AS disputed_name,
+       NULL::text AS claimed_by,
+       FALSE AS maritime,
+       6.7::float AS min_zoom
+FROM osm_border_linestring
+WHERE admin_level = 4 AND ST_GeometryType(geometry) = 'ST_LineString' AND (disputed OR maritime)
     ) /* DELAY_MATERIALIZED_VIEW_CREATION */ ;
 CREATE INDEX IF NOT EXISTS ne_10m_admin_1_states_provinces_lines_gen_z4_idx ON ne_10m_admin_1_states_provinces_lines_gen_z4 USING gist (geometry);
 
@@ -271,6 +281,7 @@ SELECT ST_Simplify(geometry, ZRes(5)) as geometry,
        NULL::text AS claimed_by,
        FALSE AS maritime
 FROM ne_50m_admin_0_boundary_lines_land
+WHERE fclass_ua IS NULL OR fclass_ua LIKE 'International boundary%'
     ) /* DELAY_MATERIALIZED_VIEW_CREATION */ ;
 CREATE INDEX IF NOT EXISTS ne_50m_admin_0_boundary_lines_land_gen_z3_idx ON ne_50m_admin_0_boundary_lines_land_gen_z3 USING gist (geometry);
 
@@ -314,6 +325,7 @@ SELECT ST_Simplify(geometry, ZRes(2)) as geometry,
        NULL::text AS claimed_by,
        FALSE AS maritime
 FROM ne_110m_admin_0_boundary_lines_land
+WHERE fclass_ua IS NULL OR fclass_ua LIKE 'International boundary%'
     ) /* DELAY_MATERIALIZED_VIEW_CREATION */ ;
 CREATE INDEX IF NOT EXISTS ne_110m_admin_0_boundary_lines_land_gen_z0_idx ON ne_110m_admin_0_boundary_lines_land_gen_z0 USING gist (geometry);
 

@@ -2,7 +2,7 @@ generalized_tables:
   # etldoc: osm_border_linestring -> osm_border_disp_linestring
   border_disp_linestring:
     source: border_linestring
-    sql_filter: ST_GeometryType(geometry) = 'ST_LineString' AND (disputed OR dispute OR border_status = 'disputed' OR disputed_by <> '') AND admin_level = 2
+    sql_filter: ST_GeometryType(geometry) = 'ST_LineString' AND (disputed OR dispute OR border_status = 'disputed' OR disputed_by <> '') AND admin_level = 2 AND claimed_by != 'UA'
 
 tables:
   # etldoc: imposm3 -> osm_border_linestring
@@ -12,6 +12,8 @@ tables:
       require:
         admin_level: [__any__]
         boundary: [administrative]
+      reject:
+        claimed_by: ['RU']
     columns:
     - name: relation_id
       type: id
